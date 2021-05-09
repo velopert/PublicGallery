@@ -5,7 +5,6 @@ import MyProfileStack from './MyProfileStack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CameraButton from '../components/CameraButton';
 import {StyleSheet, View} from 'react-native';
-import {signOut} from '../lib/auth';
 
 const Tab = createBottomTabNavigator();
 

@@ -27,10 +27,12 @@ function SetupProfile() {
         includeBase64: Platform.OS === 'android',
       },
       res => {
+        console.log(res);
         if (res.didCancel) {
           // 취소했을 경우
           return;
         }
+        console.log(res);
         setResponse(res);
       },
     );

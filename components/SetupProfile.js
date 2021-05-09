@@ -38,25 +38,34 @@ function SetupProfile() {
 
   const onSubmit = async () => {
     setLoading(true);
-    const extension = response.fileName.split('.').pop(); // 확장자 추출
-    const reference = storage().ref(`/profile/${uid}.${extension}`);
-    if (Platform.OS === 'android') {
-      await reference.putString(response.base64, 'base64', {
-        contentType: response.type,
-      });
-    } else {
-      await reference.putFile(response.uri);
+
+    let photoURL = null;
+
+    if (response) {
+      const extension = response.fileName.split('.').pop(); // 확장자 추출
+      const reference = storage().ref(`/profile/${uid}.${extension}`);
+
+      if (Platform.OS === 'android') {
+        await reference.putString(response.base64, 'base64', {
+          contentType: response.type,
+        });
+      } else {
+        await reference.putFile(response.uri);
+      }
+
+      photoURL = response ? await reference.getDownloadURL() : null;
     }
-    const imageUrl = await reference.getDownloadURL();
+
     const user = {
       id: uid,
       displayName,
-      photoURL: response ? imageUrl : null,
+      photoURL,
     };
 
     createUser(user);
     setUser(user);
   };
+
   const onCancel = () => {
     signOut();
     navigation.goBack();

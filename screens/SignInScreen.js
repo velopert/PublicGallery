@@ -58,14 +58,6 @@ function SignInScreen({navigation, route}) {
     }
   };
 
-  useEffect(() => {
-    const callback = user => {
-      console.log({user});
-    };
-    const unsubscribe = subscribeAuth(callback);
-    return unsubscribe;
-  }, []);
-
   return (
     <KeyboardAvoidingView
       style={styles.keyboardAvoidingView}

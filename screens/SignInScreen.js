@@ -13,8 +13,10 @@ import SignButtons from '../components/SignButtons';
 import SignInForm from '../components/SignForm';
 import {signIn, signUp, subscribeAuth} from '../lib/auth';
 import {getUser} from '../lib/users';
+import {useUserContext} from '../contexts/UserContext';
 
 function SignInScreen({navigation, route}) {
+  const {setUser} = useUserContext();
   const {isSignUp} = route.params || {};
   const [loading, setLoading] = useState();
   const [form, setForm] = useState({
@@ -37,7 +39,7 @@ function SignInScreen({navigation, route}) {
       if (!profile) {
         navigation.navigate('Welcome', {uid: user.uid});
       } else {
-        // 구현 예정
+        setUser(profile);
       }
 
       console.log(user);
@@ -50,6 +52,7 @@ function SignInScreen({navigation, route}) {
       };
       const msg = messages[e.code] || `${isSignUp ? '가입' : '로그인'} 실패`;
       Alert.alert('실패', msg);
+      console.log(e);
     } finally {
       setLoading(false);
     }

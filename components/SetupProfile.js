@@ -1,24 +1,61 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Pressable, Platform, Image} from 'react-native';
+import {useUserContext} from '../contexts/UserContext';
 import {signOut} from '../lib/auth';
 import {createUser} from '../lib/users';
 import BorderedInput from './BorderedInput';
 import CustomButton from './CustomButton';
+import {launchImageLibrary} from 'react-native-image-picker';
+import storage from '@react-native-firebase/storage';
 
 function SetupProfile() {
   const [displayName, setDisplayName] = useState('');
   const navigation = useNavigation();
-
+  const {setUser} = useUserContext();
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
   const {params} = useRoute();
   const {uid} = params || {};
 
-  const onSubmit = () => {
-    createUser({
+  const onSelectImage = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        maxWidth: 512,
+        maxHeight: 512,
+        includeBase64: Platform.OS === 'android',
+      },
+      res => {
+        if (res.didCancel) {
+          // 취소했을 경우
+          return;
+        }
+        setResponse(res);
+      },
+    );
+  };
+
+  const onSubmit = async () => {
+    setLoading(true);
+    const extension = response.fileName.split('.').pop(); // 확장자 추출
+    const reference = storage().ref(`/profile/${uid}.${extension}`);
+    if (Platform.OS === 'android') {
+      await reference.putString(response.base64, 'base64', {
+        contentType: response.type,
+      });
+    } else {
+      await reference.putFile(response.uri);
+    }
+    const imageUrl = await reference.getDownloadURL();
+    const user = {
       id: uid,
       displayName,
-      photoURL: null,
-    });
+      photoURL: response ? imageUrl : null,
+    };
+
+    createUser(user);
+    setUser(user);
   };
   const onCancel = () => {
     signOut();
@@ -27,7 +64,14 @@ function SetupProfile() {
 
   return (
     <View style={styles.block}>
-      <View style={styles.circle} />
+      <Pressable onPress={onSelectImage}>
+        <Image
+          style={styles.circle}
+          source={
+            response ? {uri: response.uri} : require('../assets/user.png')
+          }
+        />
+      </Pressable>
       <View style={styles.form}>
         <BorderedInput
           placeholder="닉네임"

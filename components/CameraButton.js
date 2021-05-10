@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import UploadModeModal from './UploadModeModal';
+
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
+import ActionSheetModal from './ActionSheetModal';
 
 const imagePickerOption = {
   mediaType: 'photo',
@@ -80,11 +81,21 @@ function CameraButton() {
           <Icon name="camera-alt" color="white" size={24} />
         </Pressable>
       </View>
-      <UploadModeModal
+      <ActionSheetModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onLaunchCamera={onLaunchCamera}
-        onLaunchImageLibrary={onLaunchImageLibrary}
+        actions={[
+          {
+            icon: 'camera-alt',
+            text: '카메라로 촬영하기',
+            onPress: onLaunchCamera,
+          },
+          {
+            icon: 'photo',
+            text: '사진 선택하기',
+            onPress: onLaunchImageLibrary,
+          },
+        ]}
       />
     </>
   );

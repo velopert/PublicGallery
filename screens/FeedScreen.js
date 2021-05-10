@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import PostCard from '../components/PostCard';
 import usePosts from '../hooks/usePosts';
+import events from '../lib/events';
 
 function FeedScreen() {
   const {posts, noMorePost, refreshing, onLoadMore, onRefresh} = usePosts();

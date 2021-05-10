@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import IconRightButton from '../components/IconRightButton';
 import {updatePost} from '../lib/posts';
+import events from '../lib/events';
 
 function ModifyScreen() {
   const navigation = useNavigation();
@@ -20,7 +21,11 @@ function ModifyScreen() {
       id: params.id,
       description,
     });
-    // TODO: 포스트 및 포스트 목록 업데이트
+    events.emit('updatePost', {
+      postId: params.id,
+      description,
+    });
+
     navigation.pop();
   }, [navigation, params.id, description]);
 

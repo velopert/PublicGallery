@@ -10,6 +10,7 @@ import {subscribeAuth} from '../lib/auth';
 import UploadScreen from './UploadScreen';
 import ModifyScreen from './ModifyScreen';
 import SettingScreen from './SettingScreen';
+import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ function RootStack() {
       // 처음 호출 될 떄 바로 unsubscribe하여 한번 호출 후에는 더 이상 호출되지 않게 설정
       unsubscribe();
       if (!currentUser) {
+        SplashScreen.hide();
         return;
       }
       const profile = await getUser(currentUser.uid);

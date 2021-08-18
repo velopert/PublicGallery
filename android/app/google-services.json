@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "339253517569",
+    "project_id": "public-gallery-minjun",
+    "storage_bucket": "public-gallery-minjun.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339253517569:android:cf5cfa65af9feedf794f00",
+        "android_client_info": {
+          "package_name": "com.publicgalleryminjun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339253517569-r99mg5lbeeilhrj15ktbbft6rmejambu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.publicgalleryminjun",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "339253517569-jqfr6vo5ur8a70lol58qfbvb0ul52toe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHuydrdKO89qCgtZxMbMX-rLYDrprNsuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339253517569-jqfr6vo5ur8a70lol58qfbvb0ul52toe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

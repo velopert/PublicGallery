@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:339253517569:android:cf5cfa65af9feedf794f00",
+        "mobilesdk_app_id": "1:339253517569:android:2fd7690b3578f519794f00",
         "android_client_info": {
-          "package_name": "com.publicgalleryminjun"
+          "package_name": "com.publicgalleryminjunkim"
         }
       },
       "oauth_client": [
         {
-          "client_id": "339253517569-r99mg5lbeeilhrj15ktbbft6rmejambu.apps.googleusercontent.com",
+          "client_id": "339253517569-b1jam8lmt83f9auljioe9plm9gbdpb28.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.publicgalleryminjun",
+            "package_name": "com.publicgalleryminjunkim",
             "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
@@ -37,6 +37,13 @@
             {
               "client_id": "339253517569-jqfr6vo5ur8a70lol58qfbvb0ul52toe.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "339253517569-aa80rcto7cr3j1favg89bhdbg2qk1nau.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.PublicGalleryMinjunKim"
+              }
             }
           ]
         }

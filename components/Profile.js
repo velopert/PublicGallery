@@ -22,6 +22,8 @@ function Profile({userId}) {
     getUser(userId).then(setUser);
   }, [userId]);
 
+  console.log(user, posts);
+
   if (!user || !posts) {
     return (
       <ActivityIndicator style={styles.spinner} size={32} color="#6200ee" />

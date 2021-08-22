@@ -4,6 +4,7 @@ const UserContext = createContext(null);
 
 export function UserContextProvider({children}) {
   const [user, setUser] = useState(null);
+  console.log({user});
   return (
     <UserContext.Provider
       children={children}

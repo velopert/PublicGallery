@@ -32,7 +32,7 @@ function UploadScreen() {
     const asset = res.assets[0];
 
     const extension = asset.fileName.split('.').pop();
-    const reference = storage().ref(`/photo/${user.uid}/${v4()}.${extension}`);
+    const reference = storage().ref(`/photo/${user.id}/${v4()}.${extension}`);
     if (Platform.OS === 'android') {
       await reference.putString(asset.base64, 'base64', {
         contentType: asset.type,

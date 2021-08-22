@@ -7,6 +7,7 @@ import MainTab from './MainTab';
 import {subscribeAuth} from '../lib/auth';
 import {getUser} from '../lib/users';
 import UploadScreen from './UploadScreen';
+import ModifyScreen from './ModifyScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,11 @@ function RootStack() {
               title: '새 게시물',
               headerBackTitle: '뒤로가기',
             }}
+          />
+          <Stack.Screen
+            name="Modify"
+            component={ModifyScreen}
+            options={{title: '설명 수정', headerBackTitle: '뒤로가기'}}
           />
         </>
       ) : (

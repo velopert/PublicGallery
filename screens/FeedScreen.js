@@ -1,4 +1,5 @@
 import React from 'react';
+import {useEffect} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -10,6 +11,7 @@ import usePosts from '../hooks/usePosts';
 
 function FeedScreen() {
   const {posts, noMorePost, refreshing, onLoadMore, onRefresh} = usePosts();
+
   return (
     <FlatList
       data={posts}

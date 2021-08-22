@@ -15,7 +15,7 @@ import usePosts from '../hooks/usePosts';
 
 function Profile({userId}) {
   const [user, setUser] = useState(null);
-  const {posts, noMorePost, refreshing, onLoadMore, onRefresh} =
+  const {posts, noMorePost, refreshing, onLoadMore, onRefresh, removePost} =
     usePosts(userId);
 
   useEffect(() => {
